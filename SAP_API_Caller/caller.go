@@ -58,7 +58,7 @@ func (c *SAPAPICaller) AsyncPostSupplierInvoice(
 }
 
 func (c *SAPAPICaller) Header(header *requests.Header) {
-	outputDataHeader, err := c.callSupplierInvoiceSrvAPIRequirementHeader("A_SupplierInvoiceHeader", header)
+	outputDataHeader, err := c.callSupplierInvoiceSrvAPIRequirementHeader("A_SupplierInvoice", header)
 	if err != nil {
 		c.log.Error(err)
 		return
@@ -91,7 +91,7 @@ func (c *SAPAPICaller) callSupplierInvoiceSrvAPIRequirementHeader(api string, he
 }
 
 func (c *SAPAPICaller) PurchaseOrder(purchaseOrder *requests.PurchaseOrder) {
-	url := fmt.Sprintf("A_SupplierInvoiceHeader('%s')/to_Item", purchaseOrder.PurchaseOrder)
+	url := fmt.Sprintf("A_SuplrInvcItemPurOrdRef", purchaseOrder.PurchaseOrder)
 	outputDataPurchaseOrder, err := c.callSupplierInvoiceSrvAPIRequirementoutputDataPurchaseOrder(url, purchaseOrder)
 	if err != nil {
 		c.log.Error(err)
